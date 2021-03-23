@@ -35,9 +35,9 @@ namespace TriangleNet
         double[] initialConvexPoly = new double[500];
 
         // Work arrays for smoothing
-        double[] points_p = new double[500];
-        double[] points_q = new double[500];
-        double[] points_r = new double[500];
+        double[] points_p = new double[2];
+        double[] points_q = new double[2];
+        double[] points_r = new double[2];
 
         // Work arrays for convex polygon split
         double[] poly1 = new double[100];
@@ -2290,6 +2290,12 @@ namespace TriangleNet
                     // now the second point is the neighbor's third vertex			
                     second_x = returnPoint[0];
                     second_y = returnPoint[1];
+
+                    if (numvertices == points.Length)
+                    {
+                        Resize(ref points);
+                    }
+
                     // add a new point to the list of surrounding points
                     points[numvertices] = returnPoint[0];
                     numvertices++;
@@ -2305,7 +2311,12 @@ namespace TriangleNet
             } while (!((Math.Abs(returnPoint[0] - third_x) <= EPS) &&
                      (Math.Abs(returnPoint[1] - third_y) <= EPS)));
             return numvertices / 2;
+        }
 
+        private void Resize(ref double[] array)
+        {
+            int newSize = array.Length * 2;
+            Array.Resize(ref array, newSize);
         }
 
         /// <summary>
