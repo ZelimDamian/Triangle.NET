@@ -35,9 +35,9 @@ namespace TriangleNet
         double[] initialConvexPoly = new double[500];
 
         // Work arrays for smoothing
-        double[] points_p = new double[2];
-        double[] points_q = new double[2];
-        double[] points_r = new double[2];
+        double[] points_p = new double[500];
+        double[] points_q = new double[500];
+        double[] points_r = new double[500];
 
         // Work arrays for convex polygon split
         double[] poly1 = new double[100];
